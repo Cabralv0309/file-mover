@@ -1,0 +1,12 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# PyInstaller folders (The "trash" from making an EXE)
+build/
+dist/
+*.spec
+
+# IDE settings (optional but recommended)
+.vscode/
+.idea/
