@@ -4,7 +4,7 @@ A Python-based desktop application that automatically sorts files from a source 
 
 ## How to Use
 ### For Users (No Python needed)
-If you just want to use the tool, download the latest version from the **[Releases](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/releases)** section. 
+If you just want to use the tool, download the latest version from the **[Releases](https://github.com/Cabralv0309/file-mover/releases/tag/v1.0.0)** section.
 1. Download `file_mover.exe`.
 2. Run the application (Windows may show a "SmartScreen" warning; click 'More Info' -> 'Run Anyway').
 
