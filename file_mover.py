@@ -17,6 +17,7 @@ import time
 import mimetypes
 import shutil
 import tkinter as tk
+import locale
 
 original_script_dir = os.getcwd() #This is a safeguard so the script can return to it's starting place if needed
 DEBUG = False
@@ -210,6 +211,46 @@ text_box = tk.Listbox(ui)
 text_box.grid(row=4, padx=10, pady=10)
 text_box.config(state='disabled', width=70, height=12)
 
+#Sets folder names
+if DEBUG:
+    target_entry.insert(0, 'env_downloads')
+    document_entry.insert(0, 'env_docs')
+    video_entry.insert(0, 'env_vids')
+    music_entry.insert(0, 'env_songs')
+    image_entry.insert(0, 'env_img')
+
+def get_language():
+    local_language, _ = locale.getlocale()
+    if local_language:
+        return local_language.split('_')[0]
+    return 'pt'
+
+translations = {
+    'pt': {
+        'target': 'Downloads',
+        'doc': 'Documentos',
+        'vid': 'Vídeos',
+        'music': 'Músicas',
+        'img': 'Imagens'
+    },
+    'en': {
+       'target': 'Downloads',
+        'doc': 'Documents',
+        'vid': 'Videos',
+        'music': 'Music',
+        'img': 'Pictures' 
+    }
+}
+language = get_language()
+def t(word=str):
+    return translations.get(language, translations['pt']).get(word, word)
+
+
+target_entry.insert(0, t('target'))
+document_entry.insert(0, t('doc'))
+video_entry.insert(0, t('vid'))
+music_entry.insert(0, t('music'))
+image_entry.insert(0, t('img'))
 
 #script run logic (by pressing the confirm button)
 def Confirm_btn():
@@ -270,18 +311,6 @@ confirm_btn = tk.Button(ui, text='Confirm', command=Confirm_btn)
 confirm_btn.grid(row=3, column=1, padx=30, pady=10)
 
 
-if DEBUG:
-    target_entry.insert(0, 'env_downloads')
-    document_entry.insert(0, 'env_docs')
-    video_entry.insert(0, 'env_vids')
-    music_entry.insert(0, 'env_songs')
-    image_entry.insert(0, 'env_img')
-elif not DEBUG:
-    target_entry.insert(0, 'Downloads')
-    document_entry.insert(0, 'Documentos')
-    video_entry.insert(0, 'Vídeos')
-    music_entry.insert(0, 'Músicas')
-    image_entry.insert(0, 'Imagens')
 
 
 ui.mainloop()
